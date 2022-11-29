@@ -12,7 +12,7 @@
       <h3 class="mt-3">¥<%= @item.price_add_tax.to_s(:delimited) %>（税込）</h3>
       <div class="mt-5">
         <% if @item.is_active == true %>
-          <%= form_with model: @cart_item,url: cart_items_path, local: true do |f| %>
+          <%= form_with model:@cart_item,url: cart_items_path, local: true do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.select :amount, *[1..10], {include_blank: '個数選択'} %>
           <%= f.submit "カートに入れる", class: "btn btn-success" %>
