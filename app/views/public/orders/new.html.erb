@@ -10,7 +10,7 @@
 <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
 <h3>お届け先</h3>
-  <%= f.radio_button :address_number, 1 %>
+  <%= f.radio_button :address_number, 1 , checked: true %>
   <%= f.label :address_number_1, "ご自身の住所" %>
   <%= current_customer.address_info %>
   </br>
