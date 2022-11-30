@@ -4,8 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :ships
-  has_many :cart_items
+  has_many :ships, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
          
   validates :last_name,presence:true
   validates :first_name,presence:true
@@ -24,4 +25,7 @@ class Customer < ApplicationRecord
     self.last_name_kana + " " + self.first_name_kana
   end
   
+  def address_info
+  '〒' + self.postal_code + ' ' + self.address + ' ' + self.full_name
+  end
 end
